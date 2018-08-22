@@ -149,7 +149,7 @@ def get_art_abs(story_file):
 
 def write_to_bin(url_file, out_file, makevocab=False):
   """Reads the tokenized .story files corresponding to the urls listed in the url_file and writes them to a out_file."""
-  print "Making bin file for URLs listed in %s..." % url_file
+  print ("Making bin file for URLs listed in %s..." % url_file)
   url_list = read_text_file(url_file)
   url_hashes = get_url_hashes(url_list)
   story_fnames = [s+".story" for s in url_hashes]
@@ -161,7 +161,7 @@ def write_to_bin(url_file, out_file, makevocab=False):
   with open(out_file, 'wb') as writer:
     for idx,s in enumerate(story_fnames):
       if idx % 1000 == 0:
-        print "Writing story %i of %i; %.2f percent done" % (idx, num_stories, float(idx)*100.0/float(num_stories))
+        print ("Writing story %i of %i; %.2f percent done" % (idx, num_stories, float(idx)*100.0/float(num_stories)))
 
       # Look in the tokenized story dirs to find the .story file corresponding to this url
       if os.path.isfile(os.path.join(cnn_tokenized_stories_dir, s)):
